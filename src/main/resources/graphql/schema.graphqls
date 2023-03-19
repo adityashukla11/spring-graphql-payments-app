@@ -1,0 +1,52 @@
+type Sales {
+    orderNumber: Int!,
+    total: Int!,
+    status: String!,
+    customer: Customer!,
+    payment: Payment
+}
+
+type Customer {
+    name: String!
+    email: String
+    phone: String!
+}
+
+type Payment {
+    transactionId: String!
+    paymentMethod: PaymentMethod!
+    cardNumber: String!
+    expirationDate: String!
+    cvv: String!
+    amount: Float!
+    currency: Currency!
+    description: String!
+}
+
+enum PaymentMethod {
+    credit_card
+    paypal
+    google_pay
+    apple_pay
+    amazon_pay
+    bank_transfer
+}
+
+enum Currency {
+    USD
+    EUR
+    GBP
+    JPY
+    AUD
+    CAD
+}
+
+type Query {
+    getAllPayment: [Payment]!
+    getAllCustomers: [Customer]!
+    getAllSales: [Sales]!
+    getSalesById(id: ID): Sales
+}
+
+
+
